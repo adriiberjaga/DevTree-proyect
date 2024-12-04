@@ -1,15 +1,18 @@
 import express from 'express'
+import cors from 'cors'
 import dotenv from 'dotenv';
 import router from './router';
 import connectDB from './config/db'
+import { corsConfig } from './config/cors';
 
 dotenv.config(); // Mueve esto ANTES de connectDB()
-console.log("MONGO_URI:", process.env.MONGO_URI);
-
+connectDB()
 const app = express()
 
-connectDB()
+//cors
+app.use(cors(corsConfig))
 
+//leer datos de formularios
 app.use(express.json())
 app.use('/', router)
 

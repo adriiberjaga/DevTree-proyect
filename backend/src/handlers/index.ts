@@ -28,7 +28,7 @@ export const createAcount = async (req: Request, res: Response) => {
     user.handle = handle
 
     await user.save()
-    res.send('Registro creado correctamente')
+    res.status(201).send('Registro creado correctamente')
 }
 
 export const login = async (req: Request, res: Response) => {
